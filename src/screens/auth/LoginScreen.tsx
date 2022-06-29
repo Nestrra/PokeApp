@@ -2,22 +2,61 @@
 
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { Image, StyleSheet, Text, TextInput, View } from 'react-native';
+
 import { Button } from '../../components/Button';
+
+import { users } from '../../helpers/users';
 import { useForm } from '../../hooks/useForm';
+import { getJWT } from '../../helpers/jwt';
+
+
 
 interface Props extends StackScreenProps<any, any> { }
 
-export default function LoginScreen({navigation}:Props) {
+export default function LoginScreen({ navigation }: Props) {
 
 
-    const { handleOnChange } = useForm({
+    const { handleOnChange, form } = useForm({
 
         email: '',
         password: '',
 
     });
+
+
+    const handelLogin = async (emailU: string, passwordU: string) => {
+
+
+
+        if (emailU === users.email && passwordU === users.password) {
+
+            getJWT(users.id).then((tok) => {
+
+                users.token = tok
+
+
+                if (users.token !== '') {
+
+                    navigation.navigate('HomeStack')
+
+                } else {
+                    navigation.navigate('AuthStack');
+
+                }
+            });
+
+        } else {
+
+            Alert.alert(
+
+                'Login',
+                'Los datos son incorrectos'
+
+            );
+        }
+    }
 
     return (
 
@@ -55,7 +94,7 @@ export default function LoginScreen({navigation}:Props) {
 
                         <Button
                             title='Ingresar'
-                            onPress={ ()=>navigation.navigate('HomeStack')}
+                            onPress={() => handelLogin(form.email, form.password)}
                         />
 
                         <View style={{ height: 250 }} />
@@ -117,3 +156,4 @@ const styles = StyleSheet.create({
     },
 
 });
+

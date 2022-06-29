@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import axios from 'axios';
 import { DetailsPok } from './DetailsPok';
 import { PokemonDetails } from '../../interfaces/pokemonInterfaces';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 interface Props extends StackScreenProps<any, any> {
@@ -17,7 +18,7 @@ interface Props extends StackScreenProps<any, any> {
 
 }
 
-export const PokemonScreen = ({ route }: Props) => {
+export const PokemonScreen = ({ navigation, route }: Props) => {
 
 
   const [loading, setLoading] = useState(true);
@@ -44,7 +45,17 @@ export const PokemonScreen = ({ route }: Props) => {
     <View>
 
       <LinearGradient colors={['#F77E21', '#e8ecf0']} style={styles.header} >
-        <Text style={styles.namePok} >{route.params?.pokemon.name}</Text>
+        <View style={styles.contentNamePOk}>
+          <Icon
+          style={{marginLeft:15, marginRight:25}}
+            name='arrow-back-outline'
+            size={25}
+            color='white'
+            onPress={()=>navigation.goBack()}
+          />
+          <Text style={styles.namePok} >{route.params?.pokemon.name}</Text>
+        </View>
+
 
         <Image
           style={styles.imagePOk}
@@ -84,16 +95,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#557B83',
     zIndex: 999,
   },
+  contentNamePOk: {
+    flexDirection: 'row',
+   
+    width: '100%',
+    alignItems: 'center',
+    marginTop: 12
+  },
   namePok: {
-    marginTop: 23,
+    marginLeft:55,
     fontSize: 29,
     fontWeight: '700',
     color: 'white',
   },
   imagePOk: {
     marginTop: 12,
-    width: 230,
-    height: 220,
+    width: 210,
+    height: 210,
   },
   detailContent: {
 

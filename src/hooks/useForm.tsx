@@ -3,13 +3,11 @@ import { useState } from "react";
 
 
 
-export const useForm = <T extends Object> ( form: T ) => {
-  
-
-    const [state, setState] = useState( form );
+export const useForm = <T extends Object>(form: T) => {
 
 
-    console.log(state);
+    const [state, setState] = useState(form);
+
 
     const handleOnChange = (value: string, filed: keyof T) => {
 
@@ -22,15 +20,12 @@ export const useForm = <T extends Object> ( form: T ) => {
 
     };
 
-
-    return{
+    return {
         ...state,
         form: state,
         handleOnChange,
 
     };
-
-
 
 }
 

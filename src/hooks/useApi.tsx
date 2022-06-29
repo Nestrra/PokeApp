@@ -19,11 +19,12 @@ const GET_POKEMONS = gql`
   }
 `;
 
-export const usePaginate = () => {
+export const useApi = () => {
 
 
+ // const nextPages = useRef('https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20');
   const gqlVariables = {
-    limit: 40,
+    limit: 80,
     offset: 0,
   };
 
@@ -33,8 +34,10 @@ export const usePaginate = () => {
 
 
   const pokemonsList = pokemons.results;
-  //const nextPage = useRef('https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20');
 
-  return { pokemonsList, loading };
+
+
+
+  return {pokemonsList, loading };
 
 };

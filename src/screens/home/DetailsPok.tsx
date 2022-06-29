@@ -23,7 +23,7 @@ export const DetailsPok = ({ pokemon }: Props) => {
                 <Text style={styles.abilitiesTitle} >Abilities:</Text>
                 {
                     abilities.map((abilitie) => {
-                        return <Text>  {abilitie.ability.name},  </Text>
+                        return <Text key={abilitie.ability.name} >  {abilitie.ability.name},  </Text>
                     })
                 }
 
@@ -46,7 +46,7 @@ export const DetailsPok = ({ pokemon }: Props) => {
                 {
                     stats.map((sts: any) => {
 
-                        return <View style={{ flexDirection: 'row', marginTop: 6, justifyContent:'space-between', paddingRight:115 }} >
+                        return <View key={sts.stat.name} style={{ flexDirection: 'row', marginTop: 6, justifyContent:'space-between', paddingRight:60 }} >
 
                             <Text style={styles.abilitiesTitle}> {sts.stat.name}:</Text>
 
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
     },
 
 
-})
+});

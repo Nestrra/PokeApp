@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "type": "module"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
@@ -16,13 +17,16 @@
     "@types/react-native-vector-icons": "^6.4.10",
     "axios": "^0.27.2",
     "graphql": "^16.5.0",
+    "jsonwebtoken": "^8.5.1",
     "react": "17.0.2",
     "react-native": "0.68.2",
     "react-native-gesture-handler": "^2.4.2",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-pure-jwt": "^3.0.1",
     "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",
-    "react-native-vector-icons": "^9.1.0"
+    "react-native-vector-icons": "^9.1.0",
+    "util": "^0.12.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
