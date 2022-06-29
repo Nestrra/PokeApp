@@ -11,4 +11,4 @@ Pasos para iniciar app:
 3. npx recat-native run-android
 4. para ingresar debe ingresar en email: nestrra@gmail.com y contraseña : 123456
 
-# Graciass
+# Gracias
